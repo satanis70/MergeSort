@@ -3,8 +3,12 @@ import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length < 2) {
+        if (args.length < 1) {
             System.out.println("Указаны не все аргументы..." );
+            System.exit(0);
+        } else if(args.length>2){
+            System.out.println("Указаны лишние аргументы..." );
+            System.exit(0);
         }
         ReadFile readFile = new ReadFile();
         ArrayList<Integer> firstListInteger, secondListInteger, finalListInteger;
