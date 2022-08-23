@@ -3,28 +3,29 @@ import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length < 1) {
+        if (args.length < 2) {
             System.out.println("Указаны не все аргументы..." );
         }
         ReadFile readFile = new ReadFile();
-        for (String arg : args) {
+        ArrayList<Integer> firstListInteger, secondListInteger, finalListInteger;
+        ArrayList<String> firstListStrings, secondListStrings, finalListStrings;
+        CreateFile createFile = new CreateFile();
             if (Objects.equals(args[0], "-i")) {
-                ArrayList<Integer> firstList, secondList, finalList;
-                firstList = readFile.readFileInteger("f1.txt");
-                secondList = readFile.readFileInteger("f2.txt");
-                finalList = firstList;
-                finalList.addAll(secondList);
-                System.out.println(mergeSortInteger(finalList));
+                firstListInteger = readFile.readFileInteger("f1.txt");
+                secondListInteger = readFile.readFileInteger("f2.txt");
+                finalListInteger = firstListInteger;
+                finalListInteger.addAll(secondListInteger);
+                System.out.println(mergeSortInteger(finalListInteger));
+                createFile.createFileInteger(args[1], mergeSortInteger(finalListInteger));
             } else if (Objects.equals(args[0], "-s")) {
-                ArrayList<String> firstList, secondList, finalList;
-                firstList = readFile.readFileString("f3.txt");
-                secondList = readFile.readFileString("f4.txt");
-                finalList = firstList;
-                finalList.addAll(secondList);
-                mergeSortString(finalList, 0, finalList.size()-1);
-                System.out.println(finalList);
+                firstListStrings = readFile.readFileString("f3.txt");
+                secondListStrings = readFile.readFileString("f4.txt");
+                finalListStrings = firstListStrings;
+                finalListStrings.addAll(secondListStrings);
+                mergeSortString(finalListStrings, 0, finalListStrings.size()-1);
+                System.out.println(finalListStrings);
+                createFile.createFileStrings(args[1], finalListStrings);
             }
-        }
     }
 
 
@@ -81,7 +82,6 @@ public class Main {
             return;
         }
         int mid = (from + to) / 2;
-        // sort the first and the second half
         mergeSortString(a, from, mid);
         mergeSortString(a, mid + 1, to);
         mergeString(a, from, mid, to);
