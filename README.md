@@ -8,5 +8,5 @@ java Main -s out.txt\
 java Main -i out.txt
 
 
-Версия java: 18.0.1
+Версия java: 18.0.1\
 Система сборки: Intellij 
