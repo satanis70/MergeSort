@@ -6,3 +6,7 @@ java Main [первый аргумент указывает сортировку
 # Примеры:
 java Main -s out.txt\
 java Main -i out.txt
+
+
+Версия java: 18.0.1
+Система сборки: Intellij 
